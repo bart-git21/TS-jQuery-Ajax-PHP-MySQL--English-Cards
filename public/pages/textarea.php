@@ -37,7 +37,7 @@
                 .always(() => { });
         });
         $("#updateList").on("click", function () {
-            const id = $("#getList").val();
+            const id = $("#englishListsSelect").val();
             const textareaValue = $("#textarea").val();
             $.ajax({
                 url: `/api/english/index.php/${id}`,
@@ -48,10 +48,9 @@
                 },
                 data: JSON.stringify({ id, textareaValue }),
             })
-                .done(() => alert("List updated successfully");
-                )
-            .fail((xhr, status, error) => { console.log(xhr.status) })
-    });
+                .done(() => alert("List updated successfully"))
+                .fail((xhr, status, error) => { console.log(xhr.status) })
+        });
     });
 </script>
 
