@@ -36,11 +36,11 @@
                 .fail(() => { })
                 .always(() => { });
         });
-        $("#saveList").on("click", function () {
+        $("#updateList").on("click", function () {
             const id = $("#getList").val();
             const textareaValue = $("#textarea").val();
             $.ajax({
-                url: "src/api/server.php?action=editList",
+                url: `/api/english/index.php/${id}`,
                 method: "PUT",
                 contentType: "application/json",
                 headers: {
@@ -48,12 +48,10 @@
                 },
                 data: JSON.stringify({ id, textareaValue }),
             })
-                .done((response) => {
-                    alert("List updated successfully");
-                })
-                .fail((xhr, status, error) => { console.log(error) })
-                .always(() => { });
-        });
+                .done(() => alert("List updated successfully");
+                )
+            .fail((xhr, status, error) => { console.log(xhr.status) })
+    });
     });
 </script>
 
@@ -71,7 +69,7 @@
         <button type="button" class="btn btn--red" id="createList">
             Create
         </button>
-        <button type="button" class="btn btn--red" id="saveList">
+        <button type="button" class="btn btn--red" id="updateList">
             Edit
         </button>
     </div>
