@@ -10,6 +10,11 @@
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- bootstrap  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
@@ -20,22 +25,26 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-    <!-- jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
     <!-- inline scripts and styles -->
     <link rel="stylesheet" href="src/static/style/style.css" />
     <script defer type="module" src="dist/global.js"></script>
     <script defer type="module" src="dist/index.js"></script>
+
+    <style>
+        .title {
+            font-size: 5rem;
+            font-weight: bold;
+            font-family: "Shadows Into Light";
+            color: #fff;
+        }
+    </style>
 </head>
 
 <body>
-    <main>
+    <main class="p-2">
         <div class="container ms-auto">
-            <h1 class="text-center">Learning the english</h1>
-            
+            <h1 class="text-center title">English learning application</h1>
+
             <header class="row">
                 <div class="col-md-3"></div>
                 <nav class="col-md-9">
@@ -93,9 +102,8 @@
                 </div>
             </div>
         </div>
-
-        <button class="scroll-to-top__btn"></button>
     </main>
+    <button class="scroll-to-top__btn"></button>
 </body>
 
 </html>
