@@ -11,17 +11,14 @@
         $("#englishListsSelect").on("change", function () {
             const id = $(this).val();
             $.ajax({
-                url: "src/api/server.php?action=getList",
+                url: `/api/english/index.php/${id}`,
                 method: "GET",
                 headers: {
                     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
                 },
-                data: { id },
             })
-                .done((response) => {
-                    $("#textarea").val(response.list);
-                })
-                .fail(() => { })
+                .done((response) => $("#textarea").val(response.list))
+                .fail((xhr, status, error) => { console.log(xhr.status) })
                 .always(() => { });
         });
         $("#createList").on("click", function () {
