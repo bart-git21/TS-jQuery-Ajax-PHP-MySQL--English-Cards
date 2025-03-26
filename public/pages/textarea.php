@@ -27,7 +27,7 @@
         $("#createList").on("click", function () {
             const list = $("#textarea").val();
             $.ajax({
-                url: "src/api/server.php?action=addList",
+                url: "/api/english/",
                 method: "POST",
                 contentType: "application/json",
                 headers: {
@@ -35,9 +35,7 @@
                 },
                 data: JSON.stringify({ list }),
             })
-                .done((response) => {
-                    console.log(response);
-                })
+                .done(() => alert("Success!"))
                 .fail(() => { })
                 .always(() => { });
         });
