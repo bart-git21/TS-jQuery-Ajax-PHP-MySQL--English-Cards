@@ -1,6 +1,14 @@
 <script defer>
     $(document).ready(function () {
-        $("#getList").on("change", function () {
+        $.ajax({
+            url: "/api/english/",
+            method: "GET"
+        })
+            .done((response) => {
+                response.forEach(e => $("#englishListsSelect").append(`<option value='${e.id}'>${e.id}</option>`));
+            })
+            .fail((xhr, status, error) => { console.log(xhr.status) });
+        $("#englishListsSelect").on("change", function () {
             const id = $(this).val();
             $.ajax({
                 url: "src/api/server.php?action=getList",
@@ -60,19 +68,8 @@
             id="textarea"></textarea>
     </div>
     <div class="d-flex">
-        <select class="form-select" aria-label="Default select example" id="getList">
+        <select class="form-select" aria-label="Default select example" id="englishListsSelect">
             <option selected>Retrieve the list with the ID</option>
-            <?php
-            include "src/config/db.php";
-            $stmt = $conn->prepare("SELECT * FROM english");
-            $stmt->execute();
-            $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            echo count($array);
-            foreach ($array as $elem):
-                $id = $elem['id'];
-                echo "<option value='$id'>$id</option>";
-            endforeach;
-            ?>
         </select>
     </div>
     <div class="btn-group d-flex justify-content-around p-2 areaBtn" role="group" aria-label="Basic outlined example">
