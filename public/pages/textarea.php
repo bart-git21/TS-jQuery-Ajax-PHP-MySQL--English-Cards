@@ -8,19 +8,6 @@
                 response.forEach(e => $("#englishListsSelect").append(`<option value='${e.id}'>${e.id}</option>`));
             })
             .fail((xhr, status, error) => { console.log(xhr.status) });
-        $("#englishListsSelect").on("change", function () {
-            const id = $(this).val();
-            $.ajax({
-                url: `/api/english/index.php/${id}`,
-                method: "GET",
-                headers: {
-                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-                },
-            })
-                .done((response) => $("#textarea").val(response.list))
-                .fail((xhr, status, error) => { console.log(xhr.status) })
-                .always(() => { });
-        });
         $("#createList").on("click", function () {
             const list = $("#textarea").val();
             $.ajax({
@@ -34,6 +21,19 @@
             })
                 .done(() => alert("Success!"))
                 .fail(() => { })
+                .always(() => { });
+        });
+        $("#englishListsSelect").on("change", function () {
+            const id = $(this).val();
+            $.ajax({
+                url: `/api/english/index.php/${id}`,
+                method: "GET",
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+            })
+                .done((response) => $("#textarea").val(response.list))
+                .fail((xhr, status, error) => { console.log(xhr.status) })
                 .always(() => { });
         });
         $("#updateList").on("click", function () {
@@ -50,6 +50,19 @@
             })
                 .done(() => alert("List updated successfully"))
                 .fail((xhr, status, error) => { console.log(xhr.status) })
+        });
+        $("#deleteList").on("click", function () {
+            const id = $(this).val();
+            $.ajax({
+                url: `/api/english/index.php/${id}`,
+                method: "DELETE",
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+            })
+                .done(() => alert("Successfully deleted!"))
+                .fail((xhr, status, error) => { console.log(xhr.status) })
+                .always(() => { });
         });
     });
 </script>
@@ -70,6 +83,9 @@
         </button>
         <button type="button" class="btn btn--red" id="updateList">
             Edit
+        </button>
+        <button type="button" class="btn btn--red" id="deleteList">
+            Delete
         </button>
     </div>
 </div>
