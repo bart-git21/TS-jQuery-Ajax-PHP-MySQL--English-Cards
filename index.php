@@ -35,7 +35,8 @@
             font-size: 5rem;
             font-weight: bold;
             font-family: "Shadows Into Light";
-            color: #fff;
+            color: red;
+            text-shadow: 1px 4px black;
         }
     </style>
 </head>
